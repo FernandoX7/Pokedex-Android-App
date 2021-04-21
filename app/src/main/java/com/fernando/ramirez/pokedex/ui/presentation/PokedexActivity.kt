@@ -1,4 +1,4 @@
-package com.fernando.ramirez.pokedex
+package com.fernando.ramirez.pokedex.ui.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.fernando.ramirez.pokedex.ui.theme.PokedexTheme
 
-class MainActivity : ComponentActivity() {
+class PokedexActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
