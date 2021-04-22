@@ -26,7 +26,7 @@ class PokedexActivity : ComponentActivity() {
 
     setContent {
       PokedexTheme {
-        PokedexCompose()
+        PokedexCompose(viewModel)
       }
     }
   }
