@@ -1,5 +1,6 @@
 package com.fernando.ramirez.pokedex.ui.presentation.di
 
+import com.fernando.ramirez.pokedex.data.domain.usecase.GetPokemonUseCase
 import com.fernando.ramirez.pokedex.ui.presentation.PokedexViewModelFactory
 import dagger.Module
 import dagger.Provides
@@ -13,5 +14,9 @@ class ViewModelFactoryModule {
 
   @Singleton
   @Provides
-  fun providesPokedexViewModelFactory() = PokedexViewModelFactory()
+  fun providesPokedexViewModelFactory(
+    getPokemonUseCase: GetPokemonUseCase,
+  ) = PokedexViewModelFactory(
+    getPokemonUseCase
+  )
 }
