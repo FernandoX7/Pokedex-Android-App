@@ -6,10 +6,12 @@ import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
 import com.fernando.ramirez.pokedex.ui.theme.PokedexTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class PokedexActivity : ComponentActivity() {
 
+  @Inject
   lateinit var viewModelFactory: PokedexViewModelFactory
   lateinit var viewModel: PokedexViewModel
 
