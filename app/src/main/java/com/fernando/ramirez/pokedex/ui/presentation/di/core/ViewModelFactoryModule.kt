@@ -1,7 +1,7 @@
-package com.fernando.ramirez.pokedex.ui.presentation.di
+package com.fernando.ramirez.pokedex.ui.presentation.di.core
 
 import com.fernando.ramirez.pokedex.data.domain.usecase.GetPokemonUseCase
-import com.fernando.ramirez.pokedex.ui.presentation.PokedexViewModelFactory
+import com.fernando.ramirez.pokedex.ui.presentation.di.pokedex.PokedexViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

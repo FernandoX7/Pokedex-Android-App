@@ -1,4 +1,4 @@
-package com.fernando.ramirez.pokedex.ui.presentation.di
+package com.fernando.ramirez.pokedex.ui.presentation.di.core
 
 import com.fernando.ramirez.pokedex.data.domain.repository.PokemonRepository
 import com.fernando.ramirez.pokedex.data.repository.pokemon.PokemonRepositoryImpl

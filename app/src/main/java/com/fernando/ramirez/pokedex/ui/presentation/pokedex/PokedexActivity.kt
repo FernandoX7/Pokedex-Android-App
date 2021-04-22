@@ -1,9 +1,10 @@
-package com.fernando.ramirez.pokedex.ui.presentation
+package com.fernando.ramirez.pokedex.ui.presentation.pokedex
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
+import com.fernando.ramirez.pokedex.ui.presentation.di.pokedex.PokedexViewModelFactory
 import com.fernando.ramirez.pokedex.ui.theme.PokedexTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

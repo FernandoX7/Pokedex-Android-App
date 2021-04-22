@@ -1,8 +1,9 @@
-package com.fernando.ramirez.pokedex.ui.presentation
+package com.fernando.ramirez.pokedex.ui.presentation.di.pokedex
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.fernando.ramirez.pokedex.data.domain.usecase.GetPokemonUseCase
+import com.fernando.ramirez.pokedex.ui.presentation.pokedex.PokedexViewModel
 
 class PokedexViewModelFactory(
   private val getPokemonUseCase: GetPokemonUseCase,
