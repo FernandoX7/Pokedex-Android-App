@@ -15,14 +15,23 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.FabPosition
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -37,16 +46,64 @@ import com.fernando.ramirez.pokedex.data.io.db.pokemon.Pokemon
 import com.fernando.ramirez.pokedex.ui.theme.PokedexTheme
 import com.google.accompanist.coil.rememberCoilPainter
 import com.google.accompanist.imageloading.ImageLoadState
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 @Composable
 fun PokedexCompose(
   viewModel: PokedexViewModel
 ) {
-  PokedexComposeContent(
-    modifier = Modifier.fillMaxSize(),
+  PokedexScaffold(
     pokemon = viewModel.pokemon,
     onUpdateClick = viewModel::onUpdateClick,
+  )
+}
+
+@Composable
+fun PokedexScaffold(
+  pokemon: LiveData<List<Pokemon>>,
+  onUpdateClick: () -> Unit,
+) {
+  val scaffoldState = rememberScaffoldState()
+  val scope = rememberCoroutineScope()
+
+  Scaffold(
+    scaffoldState = scaffoldState,
+    topBar = {
+      TopAppBar(
+        title = { Text("Pokedex") },
+        navigationIcon = {
+          IconButton(
+            onClick = {
+              scope.launch { scaffoldState.drawerState.open() }
+            }
+          ) {
+            Icon(
+              Icons.Filled.Menu,
+              contentDescription = "Open drawer icon"
+            )
+          }
+        },
+        backgroundColor = Color.Red,
+      )
+    },
+    floatingActionButtonPosition = FabPosition.End,
+    floatingActionButton = {
+      FloatingActionButton(
+        backgroundColor = Color.Red,
+        contentColor = Color.White,
+        onClick = onUpdateClick
+      ) {
+        Text("X")
+      }
+    },
+    drawerContent = { Text(text = "Example drawer content (;") },
+    content = {
+      PokedexComposeContent(
+        modifier = Modifier.fillMaxSize(),
+        pokemon = pokemon,
+      )
+    },
   )
 }
 
@@ -54,16 +111,11 @@ fun PokedexCompose(
 fun PokedexComposeContent(
   modifier: Modifier = Modifier,
   pokemon: LiveData<List<Pokemon>>,
-  onUpdateClick: () -> Unit,
 ) {
   Column(
     modifier = modifier
       .background(color = Color.White)
   ) {
-    Button(onClick = onUpdateClick) {
-      Text(text = "Update")
-    }
-
     PokemonList(pokemon)
   }
 }
@@ -157,7 +209,6 @@ fun DefaultPreview() {
     PokedexComposeContent(
       modifier = Modifier.fillMaxSize(),
       pokemon = viewModel.pokemon,
-      onUpdateClick = viewModel::onUpdateClick,
     )
   }
 }
