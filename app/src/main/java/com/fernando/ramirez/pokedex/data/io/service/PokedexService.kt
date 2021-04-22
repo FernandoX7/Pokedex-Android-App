@@ -5,6 +5,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface PokedexService {
-  @GET("/api/v2/pokemon")
+  @GET("/api/v2/pokemon?limit=151")
   suspend fun getPokemon(): Response<PokemonResponse>
 }
