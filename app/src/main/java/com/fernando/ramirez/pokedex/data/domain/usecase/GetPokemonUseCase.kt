@@ -7,7 +7,7 @@ class GetPokemonUseCase(
   private val pokemonRepository: PokemonRepository,
 ) {
 
-  suspend fun execute(): List<Pokemon> {
-    return pokemonRepository.getAll()
+  suspend fun execute(forceUpdate: Boolean): List<Pokemon> {
+    return pokemonRepository.getAll(forceUpdate)
   }
 }

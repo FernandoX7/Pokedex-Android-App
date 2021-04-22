@@ -17,7 +17,10 @@ class PokemonRepositoryImpl(
     return pokemonDbDataSource.deleteAll()
   }
 
-  override suspend fun getAll(): List<Pokemon> {
+  override suspend fun getAll(forceUpdate: Boolean): List<Pokemon> {
+    if (forceUpdate) {
+      return getPokemonFromApi()
+    }
     return getPokemonFromCache()
   }
 

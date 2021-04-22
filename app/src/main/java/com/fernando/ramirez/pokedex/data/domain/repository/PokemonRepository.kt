@@ -4,6 +4,6 @@ import com.fernando.ramirez.pokedex.data.io.db.pokemon.Pokemon
 
 interface PokemonRepository {
   suspend fun deleteAll(): Int
-  suspend fun getAll(): List<Pokemon>
+  suspend fun getAll(forceUpdate: Boolean): List<Pokemon>
   suspend fun updateAll(): List<Pokemon>
 }
