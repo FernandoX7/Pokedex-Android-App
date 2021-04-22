@@ -1,6 +1,8 @@
 plugins {
   id("com.android.application")
   id("kotlin-android")
+  id("kotlin-kapt")
+  id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -52,6 +54,11 @@ dependencies {
   implementation("androidx.compose.ui:ui-tooling:${rootProject.extra["compose_version"]}")
   implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
   implementation("androidx.activity:activity-compose:1.3.0-alpha07")
+
+  // Dagger Hilt
+  implementation("com.google.dagger:hilt-android:${rootProject.extra["hilt_version"]}")
+  kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hilt_version"]}")
+
   testImplementation("junit:junit:4.13.2")
   androidTestImplementation("androidx.test.ext:junit:1.1.2")
   androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
