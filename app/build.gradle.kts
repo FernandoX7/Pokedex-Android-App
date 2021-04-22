@@ -59,6 +59,11 @@ dependencies {
   implementation("com.google.dagger:hilt-android:${rootProject.extra["hilt_version"]}")
   kapt("com.google.dagger:hilt-compiler:${rootProject.extra["hilt_version"]}")
 
+  // Room db
+  implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
+  kapt("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
+  implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
+
   // OkHttp
   implementation("com.squareup.okhttp3:okhttp:4.9.0")
   implementation("com.squareup.okhttp3:logging-interceptor:4.7.2")
