@@ -84,6 +84,9 @@ dependencies {
   // Timber
   implementation("com.jakewharton.timber:timber:4.7.1")
 
+  // Coil
+  implementation("com.google.accompanist:accompanist-coil:0.8.0")
+
   testImplementation("junit:junit:4.13.2")
 
   androidTestImplementation("androidx.test.ext:junit:1.1.2")
