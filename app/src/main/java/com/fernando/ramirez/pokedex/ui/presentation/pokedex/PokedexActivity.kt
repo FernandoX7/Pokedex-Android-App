@@ -1,6 +1,7 @@
 package com.fernando.ramirez.pokedex.ui.presentation.pokedex
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.ViewModelProvider
@@ -24,10 +25,22 @@ class PokedexActivity : ComponentActivity() {
       viewModelFactory
     ).get(PokedexViewModel::class.java)
 
+    observeStatusMessage()
+
     setContent {
       PokedexTheme {
         PokedexCompose(viewModel)
       }
     }
+  }
+
+  private fun observeStatusMessage() {
+    viewModel.statusMessage.observe(this, {
+      it?.let { showToast(it) }
+    })
+  }
+
+  private fun showToast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
   }
 }
