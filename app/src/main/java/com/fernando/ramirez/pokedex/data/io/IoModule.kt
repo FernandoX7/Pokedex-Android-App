@@ -1,6 +1,7 @@
 package com.fernando.ramirez.pokedex.data.io
 
 import androidx.annotation.Nullable
+import com.fernando.ramirez.pokedex.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,7 +26,7 @@ object IoModule {
   @Singleton
   fun providesRestAdapter(@Nullable okHttpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
-      .baseUrl("https://https://pokeapi.co/api/v2/")
+      .baseUrl(BuildConfig.API)
       .addConverterFactory(GsonConverterFactory.create())
       .client(okHttpClient)
       .build()
